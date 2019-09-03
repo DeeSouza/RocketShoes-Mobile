@@ -5,9 +5,11 @@ export const Container = styled.View`
 	background: #fff;
 	border-radius: 4px;
 	margin: 15px;
+	height: auto;
+	flex: 1;
 `;
 
-export const Products = styled.View``;
+export const Products = styled.ScrollView``;
 
 export const Product = styled.View``;
 
@@ -67,7 +69,7 @@ export const ProductSubtotal = styled.Text`
 `;
 
 export const TotalContainer = styled.View`
-	margin-top: 30px;
+	margin: 15px;
 `;
 
 export const TotalText = styled.Text`
@@ -117,7 +119,6 @@ export const ButtonContinue = styled.TouchableOpacity`
 
 export const ButtonContinueText = styled.Text`
 	color: #fff;
-	font-weight: bold;
-	font-size: 14px;
+	font-size: 12px;
 	text-align: center;
 `;
