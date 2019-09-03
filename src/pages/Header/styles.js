@@ -2,7 +2,6 @@ import styled from 'styled-components/native';
 import logo from '../../assets/images/logo.png';
 
 export const WrapperContainer = styled.SafeAreaView`
-	flex: 0;
 	background: #000000;
 	flex-direction: row;
 `;
@@ -22,7 +21,7 @@ export const LogoRocket = styled.Image.attrs({
 	height: 24px;
 `;
 
-export const Cart = styled.TouchableOpacity`
+export const BasketCart = styled.TouchableOpacity`
 	height: 24px;
 	width: 24px;
 	flex: 1;

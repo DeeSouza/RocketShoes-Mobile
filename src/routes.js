@@ -16,7 +16,7 @@ const Routes = createAppContainer(
 		{
 			// Custom Header in App
 			defaultNavigationOptions: navigation => ({
-				header: <Header navigation={navigation} />,
+				header: <Header {...navigation} />,
 			}),
 			// Color App Full
 			cardStyle: {

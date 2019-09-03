@@ -4,7 +4,7 @@ export const Container = styled.View`
 	padding: 10px;
 	background: #fff;
 	border-radius: 4px;
-	margin: 60px 20px 15px 20px;
+	margin: 15px;
 `;
 
 export const Products = styled.View``;
@@ -69,11 +69,13 @@ export const ProductSubtotal = styled.Text`
 export const TotalContainer = styled.View`
 	margin-top: 30px;
 `;
+
 export const TotalText = styled.Text`
 	text-align: center;
 	color: #999;
 	font-weight: bold;
 `;
+
 export const TotalAmount = styled.Text`
 	text-align: center;
 	margin-top: 5px;
@@ -81,6 +83,7 @@ export const TotalAmount = styled.Text`
 	font-size: 32px;
 	font-weight: bold;
 `;
+
 export const Order = styled.TouchableOpacity`
 	background: #7159c1;
 	padding: 12px;
@@ -89,8 +92,8 @@ export const Order = styled.TouchableOpacity`
 
 export const OrderText = styled.Text`
 	color: #fff;
-	font-weight: bold;
-	font-size: 14px;
+	font-weight: 500;
+	font-size: 12px;
 	text-align: center;
 `;
 
@@ -103,4 +106,18 @@ export const EmptyText = styled.Text`
 	font-size: 24px;
 	font-weight: bold;
 	margin-top: 18px;
+`;
+
+export const ButtonContinue = styled.TouchableOpacity`
+	background: #ff5722;
+	padding: 12px;
+	border-radius: 4px;
+	margin-top: 10px;
+`;
+
+export const ButtonContinueText = styled.Text`
+	color: #fff;
+	font-weight: bold;
+	font-size: 14px;
+	text-align: center;
 `;

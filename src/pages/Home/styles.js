@@ -3,8 +3,6 @@ import { darken } from 'polished';
 
 export const Container = styled.View`
 	background: #000000;
-	top: 60px;
-	position: relative;
 `;
 
 export const ProductItemList = styled.View`

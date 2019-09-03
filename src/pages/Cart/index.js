@@ -27,6 +27,8 @@ import {
 	OrderText,
 	EmptyContainer,
 	EmptyText,
+	ButtonContinue,
+	ButtonContinueText,
 } from './styles';
 
 function Cart({
@@ -110,12 +112,24 @@ function Cart({
 						<Order>
 							<OrderText>FINALIZAR PEDIDO</OrderText>
 						</Order>
+						<ButtonContinue
+							onPress={() => navigation.navigate('Home')}
+						>
+							<ButtonContinueText>
+								CONTINUAR COMPRANDO
+							</ButtonContinueText>
+						</ButtonContinue>
 					</TotalContainer>
 				</>
 			) : (
 				<EmptyContainer>
 					<Icon name="remove-shopping-cart" size={64} color="#eee" />
 					<EmptyText>Seu carrinho está vazio.</EmptyText>
+					<ButtonContinue onPress={() => navigation.navigate('Home')}>
+						<ButtonContinueText>
+							CONTINUAR COMPRANDO
+						</ButtonContinueText>
+					</ButtonContinue>
 				</EmptyContainer>
 			)}
 		</Container>
@@ -155,7 +169,7 @@ Cart.propTypes = {
 		})
 	).isRequired,
 	navigation: PropTypes.shape({
-		navigate: PropTypes.func.isRequired,
+		navigate: PropTypes.func,
 	}).isRequired,
 	removeFromCart: PropTypes.func.isRequired,
 	updateAmountRequest: PropTypes.func.isRequired,

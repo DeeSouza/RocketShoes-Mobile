@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {
 	WrapperContainer,
 	Container,
-	Cart,
+	BasketCart,
 	CartSize,
 	LogoRocket,
 } from './styles';
@@ -17,10 +17,10 @@ function Header({ cartSize, navigation }) {
 		<WrapperContainer>
 			<Container>
 				<LogoRocket />
-				<Cart onPress={() => navigation.navigate('Cart')}>
+				<BasketCart onPress={() => navigation.navigate('Cart')}>
 					<Icon name="shopping-basket" size={24} color="#FFF" />
 					<CartSize>{cartSize || 0}</CartSize>
-				</Cart>
+				</BasketCart>
 			</Container>
 		</WrapperContainer>
 	);
