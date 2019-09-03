@@ -1,63 +1,77 @@
 import styled from 'styled-components/native';
-import { RectButton } from 'react-native-gesture-handler';
+import { darken } from 'polished';
 
-export const Container = styled.View``;
-
-export const ProductList = styled.FlatList``;
+export const Container = styled.View`
+	background: #000000;
+	top: 60px;
+	position: relative;
+`;
 
 export const ProductItemList = styled.View`
-	flex-direction: column;
 	background: #fff;
+	padding: 10px;
+	margin: 15px;
 	border-radius: 4px;
-	padding: 20px;
+	width: 220px;
+`;
+
+export const ProductImage = styled.Image`
+	height: 200px;
+	width: 200px;
 `;
 
 export const Title = styled.Text`
 	font-size: 16px;
-	line-height: 20px;
-	color: #333;
-	margin-top: 5px;
 `;
 
 export const Price = styled.Text`
-	font-size: 21px;
+	margin: 14px 0px;
+	font-size: 20px;
+	margin-bottom: 14px;
 	font-weight: bold;
-	margin: 5px 0px 20px;
 `;
 
-export const NoProducts = styled.View`
+export const NoProducts = styled.TouchableOpacity`
 	color: #fff;
 	font-size: 16px;
-	background-color: #333;
+	background-color: #7159c1;
 	padding: 10px 15px;
 	border-radius: 4px;
-	display: flex;
 	align-items: center;
+	margin: 20px;
 `;
 
-export const AddButton = styled(RectButton)`
-	background: #7159c1;
+export const NoProductsText = styled.Text`
+	font-size: 15px;
 	color: #fff;
-	border: 0;
-	border-radius: 4px;
-	overflow: hidden;
-	margin-top: auto;
-	display: flex;
+	margin-top: 10px;
+`;
+
+export const AddButton = styled.TouchableOpacity`
+	background: #7159c1;
+	flex-direction: row;
 	align-items: center;
+	border-radius: 4px;
+	margin-top: auto;
 `;
 
 export const Amount = styled.View`
-	align-items: center;
 	padding: 12px;
-	background-color: rgba(0, 0, 0, 0.1);
+	background: ${darken(0.03, '#7159c1')};
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+	flex-direction: row;
+	align-items: center;
 `;
 
 export const AmountNumber = styled.Text`
-	font-size: 13px;
+	color: #fff;
+	margin: 0px 4px 0px 10px;
 `;
 
 export const AddCartText = styled.Text`
 	flex: 1;
 	text-align: center;
-	font-weight: bolder;
+	font-weight: 700;
+	color: #fff;
 `;

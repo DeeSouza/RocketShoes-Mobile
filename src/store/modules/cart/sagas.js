@@ -35,7 +35,7 @@ function* addToCart({ id }) {
 		const data = {
 			...response.data,
 			amount: 1,
-			priceFormatted: Numeral(response.data.price).format('$0.00'),
+			priceFormatted: Numeral(response.data.price).format('$ 0.00'),
 			loadingAmount: true,
 		};
 

@@ -7,19 +7,19 @@ export const WrapperContainer = styled.SafeAreaView`
 	flex-direction: row;
 `;
 
+export const Container = styled.View`
+	flex-direction: row;
+	flex: 1;
+	justify-content: space-between;
+	padding: 20px;
+`;
+
 export const LogoRocket = styled.Image.attrs({
 	source: logo,
 	resizeMode: 'cover',
 })`
 	width: 185px;
 	height: 24px;
-`;
-
-export const Container = styled.View`
-	flex-direction: row;
-	flex: 1;
-	justify-content: space-between;
-	padding: 20px;
 `;
 
 export const Cart = styled.TouchableOpacity`

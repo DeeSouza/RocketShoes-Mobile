@@ -9,7 +9,7 @@ import store from './store';
 function App() {
 	return (
 		<Provider store={store}>
-			<StatusBar barStyle="light-content" backgroundColor="#000000" />
+			<StatusBar barStyle="light-content" />
 			<Routes />
 		</Provider>
 	);

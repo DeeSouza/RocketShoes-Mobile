@@ -4,12 +4,14 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
 import Home from './pages/Home';
+import Cart from './pages/Cart';
 import Header from './pages/Header';
 
 const Routes = createAppContainer(
 	createStackNavigator(
 		{
 			Home,
+			Cart,
 		},
 		{
 			// Custom Header in App

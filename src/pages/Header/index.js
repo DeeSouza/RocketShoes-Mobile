@@ -17,7 +17,6 @@ function Header({ cartSize, navigation }) {
 		<WrapperContainer>
 			<Container>
 				<LogoRocket />
-
 				<Cart onPress={() => navigation.navigate('Cart')}>
 					<Icon name="shopping-basket" size={24} color="#FFF" />
 					<CartSize>{cartSize || 0}</CartSize>
@@ -29,7 +28,9 @@ function Header({ cartSize, navigation }) {
 
 Header.propTypes = {
 	cartSize: PropTypes.number.isRequired,
-	navigation: PropTypes.func.isRequired,
+	navigation: PropTypes.shape({
+		navigate: PropTypes.func,
+	}).isRequired,
 };
 
 export default connect(state => ({

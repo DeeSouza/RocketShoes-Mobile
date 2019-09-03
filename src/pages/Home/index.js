@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { MdAddShoppingCart, MdInfo } from 'react-icons/md';
-import { FaSpinner } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import Numeral from 'numeral';
-import { FlatList, Text, Image, ActivityIndicator } from 'react-native';
+import { FlatList, ActivityIndicator } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import api from '../../services/api';
 
 import * as CartActions from '../../store/modules/cart/actions';
 
 import {
 	Container,
-	ProductList,
 	NoProducts,
+	NoProductsText,
 	ProductItemList,
 	Title,
 	Price,
 	AddButton,
 	Amount,
 	AmountNumber,
+	ProductImage,
 	AddCartText,
 } from './styles';
 
@@ -35,7 +35,7 @@ class Home extends Component {
 
 		const data = response.data.map(product => ({
 			...product,
-			priceFormatted: Numeral(product.price).format('$0.00'),
+			priceFormatted: Numeral(product.price).format('$ 0.00'),
 			loadingAmount: true,
 		}));
 
@@ -55,63 +55,59 @@ class Home extends Component {
 
 	render() {
 		const { products, loading, id } = this.state;
-		const { amount, loadingAmount } = this.props;
+		const { amount, loadingAmount, navigation } = this.props;
 
 		return (
 			<Container>
-				<ProductList>
-					<FlatList
-						keyExtractor={product => String(product.id)}
-						data={products}
-						renderItem={({ product }) => (
-							<ProductItemList>
-								<Image source={{ uri: product.image }} />
+				<FlatList
+					horizontal
+					keyExtractor={product => String(product.id)}
+					extraData={[this.props, id]}
+					data={products}
+					renderItem={({ item }) => (
+						<ProductItemList key={String(item.id)}>
+							<ProductImage source={{ uri: item.image }} />
+							<Title>{item.title}</Title>
+							<Price>{item.priceFormatted}</Price>
 
-								<Title>{product.title}</Title>
-								<Price>{product.priceFormatted}</Price>
+							<AddButton
+								onPress={() => this.handleAddProduct(item.id)}
+							>
+								<Amount>
+									{!loadingAmount[item.id] &&
+									id === item.id ? (
+										<ActivityIndicator
+											size={16}
+											color="#FFF"
+										/>
+									) : (
+										<Icon
+											name="add-shopping-cart"
+											size={16}
+											color="#FFF"
+										/>
+									)}
+									<AmountNumber>
+										{amount[item.id] || 0}
+									</AmountNumber>
+								</Amount>
 
-								<AddButton
-									type="button"
-									onClick={() =>
-										this.handleAddProduct(product.id)
-									}
-								>
-									<Amount>
-										{!loadingAmount[product.id] &&
-										id === product.id ? (
-											<FaSpinner
-												className="spin"
-												color="#FFF"
-												size={16}
-											/>
-										) : (
-											<MdAddShoppingCart
-												size={16}
-												color="#FFF"
-											/>
-										)}{' '}
-										<AmountNumber>
-											{amount[product.id] || 0}
-										</AmountNumber>
-									</Amount>
-
-									<AddCartText>
-										ADICIONAR AO CARRINHO
-									</AddCartText>
-								</AddButton>
-							</ProductItemList>
-						)}
-					/>
-				</ProductList>
+								<AddCartText>ADICIONAR</AddCartText>
+							</AddButton>
+						</ProductItemList>
+					)}
+				/>
 
 				{!loading && products.length === 0 && (
-					<NoProducts>
-						<MdInfo size={25} color="#FFF" />
-						<Text>Que pena, vendemos todo nosso estoque!</Text>
+					<NoProducts onPress={() => navigation.navigate('Cart')}>
+						<Icon name="info" size={25} color="#FFF" />
+						<NoProductsText>
+							Que pena, vendemos todo nosso estoque!
+						</NoProductsText>
 					</NoProducts>
 				)}
 
-				{loading && <ActivityIndicator size="small" color="#FFF" />}
+				{loading && <ActivityIndicator size="large" color="#FFF" />}
 			</Container>
 		);
 	}
@@ -146,4 +142,7 @@ Home.propTypes = {
 		.isRequired,
 	loadingAmount: PropTypes.oneOfType([PropTypes.object, PropTypes.number])
 		.isRequired,
+	navigation: PropTypes.shape({
+		navigate: PropTypes.func,
+	}).isRequired,
 };
